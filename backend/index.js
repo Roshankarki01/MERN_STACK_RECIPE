@@ -41,5 +41,12 @@ const SigninRouter = require('../backend/route/signinroute.js');
 app.use('/api/signin',SigninRouter);
 
 
+// for auth
+
+const authRoutes = require('./route/auth.js');
+// Routes
+app.use('/api/auth', authRoutes);
+
+
 
 
