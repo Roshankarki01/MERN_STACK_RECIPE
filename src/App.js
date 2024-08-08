@@ -1,14 +1,12 @@
-
+import React from 'react';
 import './App.css';
+import Login from "./component/loginpage"
 
 function App() {
   return (
-    <div className="App">
-      <div className="content">
-        <h1> App Component</h1>
-      </div>
-    </div>
-  );
+    <Login/>
+  )
+    
 }
 
 export default App;
