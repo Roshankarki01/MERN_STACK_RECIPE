@@ -2,46 +2,45 @@ import React, { useState } from 'react';
 import "./nav.css";
 
 function Login() {
-  const [G_mail, setGmail] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch('http://localhost:3000/login', { // Replace with your backend URL
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          G_mail,
-          password,
-        }),
-      });
-
-      const data = await response.text(); // Assuming the backend sends a plain text response
-
-      if (response.ok) {
-        setMessage(data); // "You are welcome"
-      } else {
-        setMessage('Error: ' + data); // "Incorrect Gmail or password"
-      }
-    } catch (error) {
-      setMessage('Error logging in');
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle login logic here
+    console.log('Logging in with', email, password);
   };
 
   return (
-    <div>
+    <div className="login-container">
+      <div className="login-header">
+        <img src="/path-to-your-image/logo.png" alt="Logo" className="login-logo" />
+      </div>
       <h2>Log In</h2>
-      <form onSubmit={handleLogin}>
-        <input type="email" placeholder="Gmail" value={G_mail} onChange={(e) => setGmail(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Log In</button>
+      <p>If you don't have an account? <a href="/signup">Sign Up</a></p>
+      <form onSubmit={handleSubmit}>
+        <input 
+          type="email" 
+          placeholder="Email" 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)} 
+          required 
+        />
+        <input 
+          type="password" 
+          placeholder="Password" 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)} 
+          required 
+        />
+        <p className="error-message">Please input the correct password</p>
+        <div className="social-login-buttons">
+          <button className="google-signin">Sign in with Google</button>
+          <button className="google-signin">Sign in with Facebook</button>
+          <button className="google-signin">Sign in with Twitter</button>
+        </div>
+        <button type="submit" className="login-button">Log In</button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 }
