@@ -1,62 +1,68 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import { Rating } from 'react-native-elements'; // Assuming usage of react-native-elements for star rating
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 
-const FoodCard = () => {
+const RecipeCard = ({ imageUrl, recipeName, postedTimeAgo, categoryTag, descriptionText, creatorName, rating }) => {
   return (
-    <View style={styles.card}>
-      <Image source={{ uri: 'image-url' }} style={styles.image} />
-      <Text style={styles.title}>Spaghetti Carbonara</Text>
-      <Text style={styles.subtitle}>
-        A classic Italian pasta dish featuring creamy eggs, savory pancetta, and a generous sprinkle of Parmesan cheese. Perfect for a quick yet indulgent dinner.
-      </Text>
-      <View style={styles.profileSection}>
-        {/* Avatar component to be created or imported */}
-        {/* <Avatar source={{ uri: 'avatar-url' }} /> */}
-        <Text>Rosanna Sasso</Text>
+    <View style={styles.cardContainer}>
+      <Image source={{ uri: imageUrl }} style={styles.imageStyle} />
+      <View style={styles.detailsContainer}>
+        <Text style={styles.recipeName}>{recipeName}</Text>
+        <Text style={styles.categoryTag}>{categoryTag}</Text>
+        <Text style={styles.descriptionText}>{descriptionText}</Text>
+        <View style={styles.creatorContainer}>
+          <FontAwesomeIcon icon={faBookmark} style={styles.bookmarkIcon} />
+          <Text style={styles.creatorName}>{creatorName}</Text>
+        </View>
+        {/* Rating should be rendered based on the number of stars */}
       </View>
-      <Rating
-        type='star'
-        imageSize={20}
-        readonly
-        startingValue={4} // Assuming 4 out of 5 stars rating
-      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  card: {
-    borderRadius: 6,
-    overflow: 'hidden',
+  cardContainer: {
     backgroundColor: '#fff',
+    borderRadius: 8,
+    elevation: 3,
+    marginVertical: 10,
+    marginHorizontal: 20,
     padding: 10,
-    margin: 10,
-    // Add shadows and other styling as needed
   },
-  image: {
+  imageStyle: {
     width: '100%',
     height: 200,
-    // Style as needed
+    borderRadius: 8,
   },
-  title: {
-    fontWeight: 'bold',
+  detailsContainer: {
+    paddingVertical: 10,
+  },
+  recipeName: {
     fontSize: 18,
-    marginVertical: 10,
-    // Style as needed
+    fontWeight: 'bold',
+    marginBottom: 5,
   },
-  subtitle: {
+  categoryTag: {
+    color: '#888',
+    marginBottom: 5,
+  },
+  descriptionText: {
     fontSize: 14,
-    color: '#333',
-    marginBottom: 10,
-    // Style as needed
+    lineHeight: 20,
   },
-  profileSection: {
+  creatorContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
-    // Style as needed
   },
+  bookmarkIcon: {
+    marginRight: 5,
+    color: '#888',
+  },
+  creatorName: {
+    color: '#888',
+  },
+  // Add styles for rating (e.g., stars)
 });
 
-export default FoodCard;
+export default RecipeCard;

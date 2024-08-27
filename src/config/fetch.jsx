@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const URI = 'https://catfact.ninja/facts'; 
+const URI = 'http://localhost:3000/api/recipes'; 
 
 const FetchComponent = () => {
   const [data, setData] = useState(null);
@@ -13,19 +13,28 @@ const FetchComponent = () => {
           throw new Error('Network response was not ok');
         }
         const result = await response.json();
-        console.log(result.data); // Handle the data from the response
-        setData(result.data);
+        console.log(result.data); // Check the structure of the response
+        setData(result.data); // Assuming result.data is an array of facts
       } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
       }
     };
 
     fetchData();
-  }, []); 
+  }, []);
 
   return (
     <div>
-      {/* {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : 'Loading...'} */}
+      {/* Rendering the data */}
+      {data ? (
+        <ul>
+          {data.map((fact, index) => (
+            <li key={index}>{fact.fact}</li>
+          ))}
+        </ul>
+      ) : (
+        'Loading...'
+      )}
     </div>
   );
 };
