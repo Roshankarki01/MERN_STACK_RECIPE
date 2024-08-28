@@ -1,6 +1,12 @@
 const express = require("express");
-const app = express();
+const cors = require('cors');
+
 require("dotenv").config();
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
 
 const recipemodel = require("./models/recipedata.js");
 app.use(express.json());
