@@ -21,6 +21,7 @@ const signupSchema = new mongoose.Schema({
       type: String,
       required: [true, "Recipe full cook information is required"],
     },
+    
   });
   
   const SignUP = mongoose.model('signup', signupSchema);

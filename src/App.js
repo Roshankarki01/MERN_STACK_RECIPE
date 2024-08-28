@@ -1,13 +1,13 @@
 import React from "react";
-import FetchComponent from "./config/fetch"
+import MyForm from "./component/form";
 
 
 function App() {
   return (
     
       <div className="app">
-        <FetchComponent/>
-
+        <MyForm/>
+      
       
       </div>
     
