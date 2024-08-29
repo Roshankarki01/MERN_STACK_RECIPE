@@ -8,17 +8,20 @@ const postsignin = async (req, res) => {
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });
     }
-};
+};  
+
 
 const signinusers = async (req, res) => {
     try {
-        const signups = await signupmodel.find();
+        const signups = await signupmodel.find({});
+        console.log(signups);
         res.status(200).json({ success: true, signups });
     } catch (err) {
         console.error("Error in signinusers:", err);
         res.status(500).json({ success: false, error: err.message });
     }
 };
+
 const getidsignup=  async (req, res) => {
     try {
         const user = await signupmodel.findById(req.params.id);

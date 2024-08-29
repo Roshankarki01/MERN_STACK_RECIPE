@@ -1,16 +1,15 @@
-import React from "react";
+import React from 'react';
 
-function Recipe({ title, description, time, image }) {
+function RecipeCard({ title, imageUrl, description }) {
   return (
-    <div className="recipe">
-      <img className="recipe__image" src={image} alt={title} />
-      <div className="recipe__info">
-        <h4>{title}</h4>
+    <div className="recipe-card">
+      <img src={imageUrl} alt={title} />
+      <div className="recipe-info">
+        <h3>{title}</h3>
         <p>{description}</p>
-        <p>Time: {time}</p>
       </div>
     </div>
   );
 }
 
-export default Recipe;
+export default RecipeCard;

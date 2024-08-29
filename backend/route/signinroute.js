@@ -4,7 +4,7 @@ const {postsignin,signinusers,getidsignup,editprofile,deleteprofile} = require("
 const signinrouter = express.Router();
 
 signinrouter.post("/", postsignin);
-signinrouter.get("/", signinusers);
+signinrouter.get("/allUsers", signinusers);
 signinrouter.get("/:id", getidsignup);
 signinrouter.put("/:id", editprofile);
 signinrouter.delete("/:id", deleteprofile);
