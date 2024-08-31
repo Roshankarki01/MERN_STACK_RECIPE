@@ -1,15 +1,15 @@
 import React from 'react';
 
 const MealList = () => {
-  const meals = ['Breakfast', 'Lunch', 'Dinner', 'Tea'];
 
   return (
-    <div>
+    <div className='sidebar'>
       <h1>Meals</h1>
       <ul>
-        {meals.map((meal, index) => (
-          <li key={index}>{meal}</li>
-        ))}
+        <li>Breakfast</li>
+        <li>Lunch</li>
+        <li>Dinner</li>
+        <li>Tea</li>
       </ul>
     </div>
   );
